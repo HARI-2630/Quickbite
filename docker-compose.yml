@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  # QuickBite Web Server (Tomcat 10.1)
+  web:
+    build: .
+    container_name: quickbite-web
+    ports:
+      - "8080:8080"
+    environment:
+      - db.type=mysql
+      - db.mysql.url=jdbc:mysql://db:3306/quickbite?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - db.mysql.username=root
+      - db.mysql.password=admin_password
+      - JWT_SECRET=super-secret-key-quickbite-2026-production-ready
+    depends_on:
+      - db
+    volumes:
+      - ./.env:/usr/local/tomcat/.env
+
+  # MySQL Database Server
+  db:
+    image: mysql:8.3.0
+    container_name: quickbite-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin_password
+      MYSQL_DATABASE: quickbite
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./src/main/resources/schema_mysql.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  mysql_data:

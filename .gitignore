@@ -1,0 +1,21 @@
+# Maven target directory
+target/
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+.metadata/
+
+# Environment secrets & config
+.env
+.env.local
+
+# SQLite DB files
+*.db
+*.db-journal
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.log
