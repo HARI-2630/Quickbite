@@ -681,6 +681,8 @@
     window.closeAuthModal = function() {
       authOverlay.classList.remove('active');
     }
+    // Auto-open login panel on page load
+    openAuthModal();
 
     // Interactive Platter Category Swapper
     const heroDishImage = document.getElementById('hero-dish-image');
