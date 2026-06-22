@@ -242,7 +242,7 @@ function sendEmailOtp() {
         showLoading(false);
         return res.json().then(function(data) {
             if (res.ok) {
-                window.showToast("✉️ Verification code sent to " + email, "success");
+                window.showToast(data.message || ("✉️ Verification code sent to " + email), "success");
                 
                 // Move to Google/Email OTP verification form view
                 window.switchAuthTab("google-otp");
