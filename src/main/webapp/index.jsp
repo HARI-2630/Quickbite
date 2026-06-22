@@ -652,7 +652,7 @@
     </div>
   </div>
 
-  <script src="./js/auth.js"></script>
+  <script src="./js/auth.js?v=2"></script>
   <script>
     // Theme Switcher Logic
     const themeBtn = document.getElementById('theme-toggle');
