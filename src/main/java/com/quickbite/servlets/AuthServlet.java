@@ -65,6 +65,27 @@ public class AuthServlet extends HttpServlet {
             request.setAttribute("resetToken", token);
             request.setAttribute("resetEmail", email);
             request.getRequestDispatcher("/index.jsp?action=resetPasswordForm").forward(request, response);
+        } else if ("testEmail".equals(action)) {
+            response.setContentType("text/plain; charset=UTF-8");
+            try {
+                String testEmail = request.getParameter("email");
+                if (testEmail == null) testEmail = "test@example.com";
+                boolean configured = SmsEmailService.isMailConfigured();
+                response.getWriter().println("isMailConfigured: " + configured);
+                
+                long start = System.currentTimeMillis();
+                boolean sent = SmsEmailService.sendGmail(testEmail, "Test Connection", "Testing SMTP");
+                long elapsed = System.currentTimeMillis() - start;
+                
+                response.getWriter().println("sendGmail returned: " + sent);
+                response.getWriter().println("Elapsed: " + elapsed + " ms");
+            } catch (Exception ex) {
+                java.io.StringWriter sw = new java.io.StringWriter();
+                java.io.PrintWriter pw = new java.io.PrintWriter(sw);
+                ex.printStackTrace(pw);
+                response.getWriter().println("Exception: " + sw.toString());
+            }
+            return;
         } else {
             response.sendRedirect("index.jsp");
         }
