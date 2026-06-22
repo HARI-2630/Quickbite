@@ -77,7 +77,7 @@ public class SmsEmailService {
     public static boolean sendGmail(String to, String subject, String htmlContent) {
         if (!isMailConfigured()) {
             System.out.println("[SmsEmailService SANDBOX] To: " + to + " | Subject: " + subject);
-            return true;
+            return false;
         }
 
         String mailUser = Config.get("EMAIL_USER");
