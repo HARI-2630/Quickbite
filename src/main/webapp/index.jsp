@@ -526,13 +526,18 @@
         </div>
 
         <!-- 1. Email Login Form -->
-        <form id="login-form" class="auth-form active">
+        <form id="login-form" class="auth-form active" action="auth" method="post">
+          <input type="hidden" name="action" value="login">
           <div class="form-group">
             <label for="login-email">Email Address</label>
-            <input type="email" id="login-email" class="form-input" placeholder="yourname@gmail.com" required>
+            <input type="email" id="login-email" name="email" class="form-input" placeholder="yourname@gmail.com" required>
+          </div>
+          <div class="form-group" style="margin-top: 14px;">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="password" class="form-input" placeholder="••••••••" required>
           </div>
           <button type="submit" class="checkout-btn" style="margin-top: 24px; width: 100%;">
-            Send OTP ⚡
+            Login 🔑
           </button>
         </form>
 

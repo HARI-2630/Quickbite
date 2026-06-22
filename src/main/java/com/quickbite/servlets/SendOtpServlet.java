@@ -26,12 +26,13 @@ public class SendOtpServlet extends HttpServlet {
         }
         email = email.trim().toLowerCase();
 
-        // Retrieve SMTP credentials from web.xml context params
-        String mailUser = getServletContext().getInitParameter("EMAIL_USER");
-        String mailPass = getServletContext().getInitParameter("EMAIL_PASS");
+        // Retrieve SMTP credentials using Config utility
+        String mailUser = com.quickbite.security.Config.get("EMAIL_USER");
+        String mailPass = com.quickbite.security.Config.get("EMAIL_PASS");
 
         // Generate 6-digit OTP
         String otpCode = OtpService.generateOtp();
+        System.out.println("[SendOtpServlet] Generated OTP for " + email + " is: " + otpCode);
 
         // Send OTP using OtpService
         boolean sent = OtpService.sendOtpEmail(mailUser, mailPass, email, otpCode);

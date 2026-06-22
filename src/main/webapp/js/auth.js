@@ -35,14 +35,8 @@ document.addEventListener("DOMContentLoaded", function() {
         handleAuthMessages(msg);
     }
 
-    // Set up email login form submit
-    var loginForm = document.getElementById("login-form");
-    if (loginForm) {
-        loginForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-            sendEmailOtp();
-        });
-    }
+    // Set up email login form submit - handled natively via POST to /auth
+
 
     // Set up phone form submit
     var phoneForm = document.getElementById("phone-form");

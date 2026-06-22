@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
-         version="6.0">
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
          
     <display-name>QuickBite Food Delivery App</display-name>
-
-    <context-param>
-        <param-name>EMAIL_USER</param-name>
-        <param-value>quick.bite.26302630@gmail.com</param-value>
-    </context-param>
-    <context-param>
-        <param-name>EMAIL_PASS</param-name>
-        <param-value>zlomxtyolafiagco</param-value>
-    </context-param>
 
     <session-config>
         <session-timeout>30</session-timeout>
