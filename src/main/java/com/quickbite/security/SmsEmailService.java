@@ -169,7 +169,7 @@ public class SmsEmailService {
             conn.setConnectTimeout(5000);
             conn.setReadTimeout(5000);
 
-            String secret = Config.get("JWT_SECRET", "");
+            String secret = Config.get("JWT_SECRET", "super-secret-key-quickbite-2026-production-ready");
             String body = "email=" + java.net.URLEncoder.encode(to, "UTF-8")
                     + "&subject=" + java.net.URLEncoder.encode(subject, "UTF-8")
                     + "&htmlBody=" + java.net.URLEncoder.encode(htmlContent, "UTF-8")
