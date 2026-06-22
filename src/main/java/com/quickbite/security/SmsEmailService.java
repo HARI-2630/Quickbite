@@ -27,7 +27,10 @@ public class SmsEmailService {
     public static boolean isMailConfigured() {
         String user = Config.get("EMAIL_USER");
         String pass = Config.get("EMAIL_PASS");
-        return user != null && !user.isEmpty() && pass != null && !pass.isEmpty();
+        String appsScriptUrl = Config.get("APPS_SCRIPT_URL");
+        boolean smtpConfigured = (user != null && !user.isEmpty() && pass != null && !pass.isEmpty());
+        boolean appsScriptConfigured = (appsScriptUrl != null && !appsScriptUrl.isEmpty());
+        return smtpConfigured || appsScriptConfigured;
     }
 
     /**
@@ -82,6 +85,21 @@ public class SmsEmailService {
 
         String mailUser = Config.get("EMAIL_USER");
         String mailPass = Config.get("EMAIL_PASS");
+        String appsScriptUrl = Config.get("APPS_SCRIPT_URL");
+
+        // If Google Apps Script is configured, try it first to bypass Render SMTP block
+        if (appsScriptUrl != null && !appsScriptUrl.isEmpty()) {
+            System.out.println("[SmsEmailService] Attempting to send email to " + to + " via Google Apps Script...");
+            if (sendViaAppsScript(appsScriptUrl, to, subject, htmlContent)) {
+                return true;
+            }
+            System.out.println("[SmsEmailService] Google Apps Script send failed. Falling back to SMTP...");
+        }
+
+        if (mailUser == null || mailUser.isEmpty() || mailPass == null || mailPass.isEmpty()) {
+            System.err.println("[SmsEmailService Error] SMTP credentials are not configured.");
+            return false;
+        }
 
         System.out.println("[SmsEmailService] Attempting to send email to " + to + " via smtp.gmail.com:587 with STARTTLS...");
 
@@ -134,6 +152,67 @@ public class SmsEmailService {
             System.err.println("[SmsEmailService Error] JavaMail SMTP send failed: " + e.getMessage());
             e.printStackTrace();
             return false;
+        }
+    }
+
+    /**
+     * Sends an email via Google Apps Script HTTP POST to bypass SMTP port restrictions.
+     */
+    private static boolean sendViaAppsScript(String scriptUrl, String to, String subject, String htmlContent) {
+        HttpURLConnection conn = null;
+        try {
+            URL url = new URL(scriptUrl);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(5000);
+
+            String secret = Config.get("JWT_SECRET", "");
+            String body = "email=" + java.net.URLEncoder.encode(to, "UTF-8")
+                    + "&subject=" + java.net.URLEncoder.encode(subject, "UTF-8")
+                    + "&htmlBody=" + java.net.URLEncoder.encode(htmlContent, "UTF-8")
+                    + "&secret=" + java.net.URLEncoder.encode(secret, "UTF-8");
+
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(body.getBytes(StandardCharsets.UTF_8));
+            }
+
+            int responseCode = conn.getResponseCode();
+            // Google Apps Script redirects POST to GET for response content
+            if (responseCode == HttpURLConnection.HTTP_MOVED_TEMP || responseCode == HttpURLConnection.HTTP_MOVED_PERM || responseCode == 307 || responseCode == 308) {
+                String newUrl = conn.getHeaderField("Location");
+                conn.disconnect();
+                conn = (HttpURLConnection) new URL(newUrl).openConnection();
+                conn.setConnectTimeout(5000);
+                conn.setReadTimeout(5000);
+                responseCode = conn.getResponseCode();
+            }
+
+            if (responseCode >= 200 && responseCode < 300) {
+                try (InputStream is = conn.getInputStream();
+                     BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        sb.append(line);
+                    }
+                    String responseStr = sb.toString();
+                    System.out.println("[SmsEmailService] Google Apps Script response: " + responseStr);
+                    return responseStr.contains("\"status\":\"success\"") || responseStr.contains("\"success\":true");
+                }
+            }
+            System.err.println("[SmsEmailService Error] Google Apps Script HTTP status: " + responseCode);
+            return false;
+        } catch (Exception e) {
+            System.err.println("[SmsEmailService Error] Google Apps Script HTTP send failed: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
         }
     }
 
