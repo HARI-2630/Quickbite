@@ -154,15 +154,31 @@ INSERT INTO menu_items (id, restaurant_id, name, price, category, image_url) VAL
 (36, 5, 'Mumbai Vada Pav (Double)', 60.00, 'maggi', 'assets/dish_vada_pav.png'),
 (37, 5, 'Paneer Pakora Platter', 110.00, 'maggi', 'assets/dish_pakora.png'),
 (38, 5, 'Aloo Tikki Burger Pav', 80.00, 'maggi', 'assets/dish_aloo_tikki_burger.png'),
--- Ice Cream / Desserts
-(27, 6, 'Gulab Jamun with Ice Cream', 95.00, 'icecream', 'assets/dish_gulab_jamun.png'),
-(28, 6, 'Mango Kulfi Slice', 65.00, 'icecream', 'assets/dish_mango_kulfi.png'),
-(29, 6, 'Chocolate Fudge Ice Cream', 110.00, 'icecream', 'assets/dish_chocolate_icecream.png'),
-(30, 6, 'Saffron Badam Kheer', 85.00, 'icecream', 'assets/dish_badam_kheer.png'),
-(31, 6, 'Royal Rose Falooda', 130.00, 'icecream', 'assets/dish_rose_lassi.png'),
-(46, 6, 'Kesar Pista Kulfi Stick', 70.00, 'icecream', 'assets/dish_mango_kulfi.png'),
-(47, 6, 'Gajar Ka Halwa with Dry Fruits', 120.00, 'icecream', 'assets/dish_gulab_jamun.png'),
-(48, 6, 'Rabri Malai Falooda Bowl', 150.00, 'icecream', 'assets/dish_rose_lassi.png'),
-(49, 6, 'Hot Rasgulla in Sweet Syrup (2 Pcs)', 80.00, 'icecream', 'assets/dish_gulab_jamun.png'),
-(50, 6, 'Double Ka Meetha (Bread Pudding)', 110.00, 'icecream', 'assets/dish_gulab_jamun.png')
+-- Desserts
+(27, 6, 'Gulab Jamun with Ice Cream', 95.00, 'dessert', 'assets/dish_gulab_jamun.png'),
+(28, 6, 'Mango Kulfi Slice', 65.00, 'dessert', 'assets/dish_mango_kulfi.png'),
+(29, 6, 'Chocolate Fudge Ice Cream', 110.00, 'dessert', 'assets/dish_chocolate_icecream.png'),
+(30, 6, 'Saffron Badam Kheer', 85.00, 'dessert', 'assets/dish_badam_kheer.png'),
+(31, 6, 'Royal Rose Falooda', 130.00, 'dessert', 'assets/dish_rose_lassi.png'),
+(46, 6, 'Kesar Pista Kulfi Stick', 70.00, 'dessert', 'assets/dish_mango_kulfi.png'),
+(47, 6, 'Gajar Ka Halwa with Dry Fruits', 120.00, 'dessert', 'assets/dish_gulab_jamun.png'),
+(48, 6, 'Rabri Malai Falooda Bowl', 150.00, 'dessert', 'assets/dish_rose_lassi.png'),
+(49, 6, 'Hot Rasgulla in Sweet Syrup (2 Pcs)', 80.00, 'dessert', 'assets/dish_gulab_jamun.png'),
+(50, 6, 'Double Ka Meetha (Bread Pudding)', 110.00, 'dessert', 'assets/dish_gulab_jamun.png'),
+-- Mexican Bowls
+(51, 1, 'Paneer Fajita Mexican Bowl', 220.00, 'mexican', 'assets/dish_paneer_biryani.png'),
+(52, 1, 'Spicy Chicken Burrito Bowl', 260.00, 'mexican', 'assets/dish_chicken_biryani.png'),
+(53, 1, 'Loaded Guacamole Rice Bowl', 240.00, 'mexican', 'assets/dish_veg_biryani.png'),
+-- Sandwiches & Wraps
+(54, 2, 'Classic Grilled Cheese Sandwich', 130.00, 'sandwiches', 'assets/dish_aloo_tikki_burger.png'),
+(55, 2, 'Spicy Paneer Tikka Wrap', 160.00, 'sandwiches', 'assets/dish_paneer_burger.png'),
+(56, 2, 'Club Sandwich with Crispy Fries', 180.00, 'sandwiches', 'assets/dish_truffle_burger.png'),
+-- Chaats
+(57, 5, 'Delhi Style Dahi Papdi Chaat', 90.00, 'chaats', 'assets/dish_samosa.png'),
+(58, 5, 'Spicy Raj Kachori Platter', 120.00, 'chaats', 'assets/dish_pakora.png'),
+(59, 5, 'Sev Puri Special', 80.00, 'chaats', 'assets/dish_vada_pav.png'),
+-- Rolls
+(60, 5, 'Double Egg Double Chicken Roll', 170.00, 'rolls', 'assets/dish_chicken_maggi.png'),
+(61, 5, 'Crispy Veg Spring Roll (2 Pcs)', 110.00, 'rolls', 'assets/dish_samosa.png'),
+(62, 5, 'Shahi Paneer Tikka Roll', 150.00, 'rolls', 'assets/dish_paneer_burger.png')
 ON DUPLICATE KEY UPDATE name=VALUES(name), price=VALUES(price), category=VALUES(category), image_url=VALUES(image_url);

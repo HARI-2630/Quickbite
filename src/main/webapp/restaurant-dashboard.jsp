@@ -199,6 +199,11 @@
                 <option value="maggi">Maggi</option>
                 <option value="burgers">Burgers</option>
                 <option value="pizza">Pizza</option>
+                <option value="mexican">Mexican Bowls</option>
+                <option value="sandwiches">Sandwiches & Wraps</option>
+                <option value="chaats">Chaats</option>
+                <option value="rolls">Rolls</option>
+                <option value="dessert">Dessert</option>
                 <option value="drinks">Drinks</option>
               </select>
               <input type="text" name="imageUrl" class="form-input" placeholder="Image URL (optional)">

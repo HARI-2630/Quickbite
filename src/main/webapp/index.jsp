@@ -359,7 +359,11 @@
         <button class="category-pill" onclick="changeHeroDish('maggi')" style="cursor: pointer;"><span class="category-icon">🍜</span><span>Maggi</span></button>
         <button class="category-pill" onclick="changeHeroDish('burgers')" style="cursor: pointer;"><span class="category-icon">🍔</span><span>Burgers</span></button>
         <button class="category-pill" onclick="changeHeroDish('pizza')" style="cursor: pointer;"><span class="category-icon">🍕</span><span>Pizzas</span></button>
-        <button class="category-pill" onclick="changeHeroDish('icecream')" style="cursor: pointer;"><span class="category-icon">🍦</span><span>Ice Cream</span></button>
+        <button class="category-pill" onclick="changeHeroDish('mexican')" style="cursor: pointer;"><span class="category-icon">🌮</span><span>Mexican Bowls</span></button>
+        <button class="category-pill" onclick="changeHeroDish('sandwiches')" style="cursor: pointer;"><span class="category-icon">🥪</span><span>Sandwiches & Wraps</span></button>
+        <button class="category-pill" onclick="changeHeroDish('chaats')" style="cursor: pointer;"><span class="category-icon">🥗</span><span>Chaats</span></button>
+        <button class="category-pill" onclick="changeHeroDish('rolls')" style="cursor: pointer;"><span class="category-icon">🌯</span><span>Rolls</span></button>
+        <button class="category-pill" onclick="changeHeroDish('dessert')" style="cursor: pointer;"><span class="category-icon">🍰</span><span>Dessert</span></button>
         <button class="category-pill" onclick="changeHeroDish('drinks')" style="cursor: pointer;"><span class="category-icon">🥤</span><span>Drinks</span></button>
       </div>
     </div>
@@ -704,7 +708,27 @@
         name: 'Classic Margherita Pizza',
         color: '#ffa502'
       },
-      icecream: {
+      mexican: {
+        src: 'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500',
+        name: 'Paneer Fajita Mexican Bowl',
+        color: '#2ed573'
+      },
+      sandwiches: {
+        src: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500',
+        name: 'Spicy Paneer Tikka Wrap',
+        color: '#ff4757'
+      },
+      chaats: {
+        src: 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500',
+        name: 'Delhi Style Dahi Papdi Chaat',
+        color: '#ffa502'
+      },
+      rolls: {
+        src: 'https://images.unsplash.com/photo-1626700051175-6518c4793f4f?w=500',
+        name: 'Shahi Paneer Tikka Roll',
+        color: '#1e90ff'
+      },
+      dessert: {
         src: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500',
         name: 'Chocolate Fudge Ice Cream',
         color: '#ffa502'

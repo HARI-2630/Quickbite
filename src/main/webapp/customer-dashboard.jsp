@@ -128,7 +128,11 @@
         <button class="category-pill" data-id="maggi"><span class="category-icon">🍜</span><span>Maggi</span></button>
         <button class="category-pill" data-id="burgers"><span class="category-icon">🍔</span><span>Burgers</span></button>
         <button class="category-pill" data-id="pizza"><span class="category-icon">🍕</span><span>Pizzas</span></button>
-        <button class="category-pill" data-id="icecream"><span class="category-icon">🍦</span><span>Ice Cream</span></button>
+        <button class="category-pill" data-id="mexican"><span class="category-icon">🌮</span><span>Mexican Bowls</span></button>
+        <button class="category-pill" data-id="sandwiches"><span class="category-icon">🥪</span><span>Sandwiches & Wraps</span></button>
+        <button class="category-pill" data-id="chaats"><span class="category-icon">🥗</span><span>Chaats</span></button>
+        <button class="category-pill" data-id="rolls"><span class="category-icon">🌯</span><span>Rolls</span></button>
+        <button class="category-pill" data-id="dessert"><span class="category-icon">🍰</span><span>Dessert</span></button>
         <button class="category-pill" data-id="drinks"><span class="category-icon">🥤</span><span>Drinks</span></button>
       </div>
     </div>

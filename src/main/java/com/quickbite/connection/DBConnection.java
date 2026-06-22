@@ -137,8 +137,8 @@ public class DBConnection {
             stmt.execute("INSERT OR IGNORE INTO users (id, name, email, password, role, status) VALUES (2, 'Bob Owner', 'owner@quickbite.com', '" + ownerHash + "', 'RESTAURANT_ADMIN', 'ACTIVE');");
             stmt.execute("INSERT OR IGNORE INTO users (id, name, email, password, role, status) VALUES (3, 'Charlie Admin', 'admin@quickbite.com', '" + adminHash + "', 'SUPER_ADMIN', 'ACTIVE');");
             
-            // Force re-seed of restaurant 1 and menu items (to replace Biryani with Snacks)
-            stmt.execute("DELETE FROM menu_items WHERE id IN (1, 2, 3, 14, 15, 32, 33, 34);");
+            // Force re-seed of menu items (to replace with Snacks, Mexican, Sandwiches, Chaats, Rolls, and Desserts)
+            stmt.execute("DELETE FROM menu_items WHERE id IN (1, 2, 3, 14, 15, 27, 28, 29, 30, 31, 32, 33, 34, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62);");
             stmt.execute("UPDATE restaurants SET name = 'Royal Snacks & Bites', cuisine = 'Snacks & Finger Foods' WHERE id = 1;");
 
             stmt.execute("INSERT OR IGNORE INTO restaurants (id, name, cuisine, owner_id, status) VALUES (1, 'Royal Snacks & Bites', 'Snacks & Finger Foods', 2, 'OPEN');");
@@ -190,17 +190,37 @@ public class DBConnection {
             stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (37, 5, 'Paneer Pakora Platter', 110.00, 'maggi', 'assets/dish_pakora.png');");
             stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (38, 5, 'Aloo Tikki Burger Pav', 80.00, 'maggi', 'assets/dish_aloo_tikki_burger.png');");
             
-            // Ice Cream / Desserts
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (27, 6, 'Gulab Jamun with Ice Cream', 95.00, 'icecream', 'assets/dish_gulab_jamun.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (28, 6, 'Mango Kulfi Slice', 65.00, 'icecream', 'assets/dish_mango_kulfi.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (29, 6, 'Chocolate Fudge Ice Cream', 110.00, 'icecream', 'assets/dish_chocolate_icecream.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (30, 6, 'Saffron Badam Kheer', 85.00, 'icecream', 'assets/dish_badam_kheer.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (31, 6, 'Royal Rose Falooda', 130.00, 'icecream', 'assets/dish_rose_lassi.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (46, 6, 'Kesar Pista Kulfi Stick', 70.00, 'icecream', 'assets/dish_mango_kulfi.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (47, 6, 'Gajar Ka Halwa with Dry Fruits', 120.00, 'icecream', 'assets/dish_gulab_jamun.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (48, 6, 'Rabri Malai Falooda Bowl', 150.00, 'icecream', 'assets/dish_rose_lassi.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (49, 6, 'Hot Rasgulla in Sweet Syrup (2 Pcs)', 80.00, 'icecream', 'assets/dish_gulab_jamun.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (50, 6, 'Double Ka Meetha (Bread Pudding)', 110.00, 'icecream', 'assets/dish_gulab_jamun.png');");
+            // Desserts
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (27, 6, 'Gulab Jamun with Ice Cream', 95.00, 'dessert', 'assets/dish_gulab_jamun.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (28, 6, 'Mango Kulfi Slice', 65.00, 'dessert', 'assets/dish_mango_kulfi.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (29, 6, 'Chocolate Fudge Ice Cream', 110.00, 'dessert', 'assets/dish_chocolate_icecream.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (30, 6, 'Saffron Badam Kheer', 85.00, 'dessert', 'assets/dish_badam_kheer.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (31, 6, 'Royal Rose Falooda', 130.00, 'dessert', 'assets/dish_rose_lassi.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (46, 6, 'Kesar Pista Kulfi Stick', 70.00, 'dessert', 'assets/dish_mango_kulfi.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (47, 6, 'Gajar Ka Halwa with Dry Fruits', 120.00, 'dessert', 'assets/dish_gulab_jamun.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (48, 6, 'Rabri Malai Falooda Bowl', 150.00, 'dessert', 'assets/dish_rose_lassi.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (49, 6, 'Hot Rasgulla in Sweet Syrup (2 Pcs)', 80.00, 'dessert', 'assets/dish_gulab_jamun.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (50, 6, 'Double Ka Meetha (Bread Pudding)', 110.00, 'dessert', 'assets/dish_gulab_jamun.png');");
+
+            // Mexican Bowls
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (51, 1, 'Paneer Fajita Mexican Bowl', 220.00, 'mexican', 'assets/dish_paneer_biryani.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (52, 1, 'Spicy Chicken Burrito Bowl', 260.00, 'mexican', 'assets/dish_chicken_biryani.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (53, 1, 'Loaded Guacamole Rice Bowl', 240.00, 'mexican', 'assets/dish_veg_biryani.png');");
+
+            // Sandwiches & Wraps
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (54, 2, 'Classic Grilled Cheese Sandwich', 130.00, 'sandwiches', 'assets/dish_aloo_tikki_burger.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (55, 2, 'Spicy Paneer Tikka Wrap', 160.00, 'sandwiches', 'assets/dish_paneer_burger.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (56, 2, 'Club Sandwich with Crispy Fries', 180.00, 'sandwiches', 'assets/dish_truffle_burger.png');");
+
+            // Chaats
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (57, 5, 'Delhi Style Dahi Papdi Chaat', 90.00, 'chaats', 'assets/dish_samosa.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (58, 5, 'Spicy Raj Kachori Platter', 120.00, 'chaats', 'assets/dish_pakora.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (59, 5, 'Sev Puri Special', 80.00, 'chaats', 'assets/dish_vada_pav.png');");
+
+            // Rolls
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (60, 5, 'Double Egg Double Chicken Roll', 170.00, 'rolls', 'assets/dish_chicken_maggi.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (61, 5, 'Crispy Veg Spring Roll (2 Pcs)', 110.00, 'rolls', 'assets/dish_samosa.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (62, 5, 'Shahi Paneer Tikka Roll', 150.00, 'rolls', 'assets/dish_paneer_burger.png');");
             
             System.out.println("SQLite tables created and seeded successfully!");
         } catch (Exception e) {
