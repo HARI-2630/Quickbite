@@ -208,11 +208,11 @@ public class GoogleLoginServlet extends HttpServlet {
         session.setVerified(false);
 
         otpDAO.saveSession(session);
-        SmsEmailService.sendEmailOtp(email, otpCode);
+        boolean sent = SmsEmailService.sendEmailOtp(email, otpCode);
 
         // Redirect to index page to open the OTP dialog
         String redirectUrl = "index.jsp?action=verifyGoogleOtp&email=" + java.net.URLEncoder.encode(email, "UTF-8");
-        if (!SmsEmailService.isMailConfigured()) {
+        if (!sent) {
             redirectUrl += "&demoOtp=" + otpCode;
         }
         response.sendRedirect(redirectUrl);

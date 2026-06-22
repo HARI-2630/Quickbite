@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var error = urlParams.get("error");
     var msg = urlParams.get("msg");
     var demoOtp = urlParams.get("demoOtp");
+    var demoResetLink = urlParams.get("demoResetLink");
 
     if (action === "verifyGoogleOtp" && email) {
         window.openAuthModal();
@@ -33,6 +34,11 @@ document.addEventListener("DOMContentLoaded", function() {
     } else if (msg) {
         window.openAuthModal();
         handleAuthMessages(msg);
+        if (demoResetLink) {
+            setTimeout(function() {
+                window.showToast("🔑 Demo Reset Link: <a href='" + demoResetLink + "' style='color:#fff;text-decoration:underline;'>Click Here to Reset</a>", "info");
+            }, 1500);
+        }
     }
 
     // Set up email login form submit - handled natively via POST to /auth
@@ -443,7 +449,7 @@ window.showToast = function(message, type) {
         toast.style.borderLeft = "4px solid #70a1ff";
     }
 
-    toast.textContent = message;
+    toast.innerHTML = message;
     container.appendChild(toast);
 
     // Trigger animate-in

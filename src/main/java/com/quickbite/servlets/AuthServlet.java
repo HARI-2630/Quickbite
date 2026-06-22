@@ -184,8 +184,13 @@ public class AuthServlet extends HttpServlet {
             String requestUrl = request.getRequestURL().toString();
             String resetLink = requestUrl + "?action=resetPasswordForm&token=" + token + "&email=" + java.net.URLEncoder.encode(email, "UTF-8");
             
-            SmsEmailService.sendResetPasswordEmail(email, resetLink);
+            boolean sent = SmsEmailService.sendResetPasswordEmail(email, resetLink);
             writeAudit(user.getId(), "Password Reset Requested", request);
+            
+            if (!sent) {
+                response.sendRedirect("index.jsp?msg=reset_link_sent&demoResetLink=" + java.net.URLEncoder.encode(resetLink, "UTF-8"));
+                return;
+            }
         }
 
         response.sendRedirect("index.jsp?msg=reset_link_sent");
