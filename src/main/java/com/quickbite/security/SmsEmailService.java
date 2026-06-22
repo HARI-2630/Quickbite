@@ -91,6 +91,8 @@ public class SmsEmailService {
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true");
         prop.put("mail.smtp.ssl.protocols", "TLSv1.2 TLSv1.3");
+        prop.put("mail.smtp.connectiontimeout", "2000"); // 2 seconds connect timeout
+        prop.put("mail.smtp.timeout", "2000");           // 2 seconds read timeout
 
         Session session = Session.getInstance(prop, new Authenticator() {
             @Override
