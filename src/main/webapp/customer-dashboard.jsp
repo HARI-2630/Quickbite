@@ -124,7 +124,7 @@
     <div class="container">
       <div class="category-container" id="category-container">
         <button class="category-pill active" data-id="all"><span class="category-icon">🍽️</span><span>All Foods</span></button>
-        <button class="category-pill" data-id="biryani"><span class="category-icon">🍛</span><span>Biryani</span></button>
+        <button class="category-pill" data-id="snacks"><span class="category-icon">🍟</span><span>Snacks</span></button>
         <button class="category-pill" data-id="maggi"><span class="category-icon">🍜</span><span>Maggi</span></button>
         <button class="category-pill" data-id="burgers"><span class="category-icon">🍔</span><span>Burgers</span></button>
         <button class="category-pill" data-id="pizza"><span class="category-icon">🍕</span><span>Pizzas</span></button>
@@ -409,7 +409,7 @@
         if (hours >= 5 && hours < 11) {
           suggestion = "Recommended Morning fuel: Sizzling hot Maggi & Premium Shakes ☕";
         } else if (hours >= 11 && hours < 16) {
-          suggestion = "Recommended Lunch fuel: Kolkata Special Dum Biryani 🍛";
+          suggestion = "Recommended Lunch fuel: Loaded Cheesy Nachos & Tikka Rolls 🍟";
         } else if (hours >= 16 && hours < 22) {
           suggestion = "Recommended Dinner fuel: Double Cheese Burgers & Truffle Pizza 🍕";
         } else {

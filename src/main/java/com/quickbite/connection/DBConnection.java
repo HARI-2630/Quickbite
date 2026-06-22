@@ -137,21 +137,25 @@ public class DBConnection {
             stmt.execute("INSERT OR IGNORE INTO users (id, name, email, password, role, status) VALUES (2, 'Bob Owner', 'owner@quickbite.com', '" + ownerHash + "', 'RESTAURANT_ADMIN', 'ACTIVE');");
             stmt.execute("INSERT OR IGNORE INTO users (id, name, email, password, role, status) VALUES (3, 'Charlie Admin', 'admin@quickbite.com', '" + adminHash + "', 'SUPER_ADMIN', 'ACTIVE');");
             
-            stmt.execute("INSERT OR IGNORE INTO restaurants (id, name, cuisine, owner_id, status) VALUES (1, 'Royal Biryani House', 'Indian & Biryani', 2, 'OPEN');");
+            // Force re-seed of restaurant 1 and menu items (to replace Biryani with Snacks)
+            stmt.execute("DELETE FROM menu_items WHERE id IN (1, 2, 3, 14, 15, 32, 33, 34);");
+            stmt.execute("UPDATE restaurants SET name = 'Royal Snacks & Bites', cuisine = 'Snacks & Finger Foods' WHERE id = 1;");
+
+            stmt.execute("INSERT OR IGNORE INTO restaurants (id, name, cuisine, owner_id, status) VALUES (1, 'Royal Snacks & Bites', 'Snacks & Finger Foods', 2, 'OPEN');");
             stmt.execute("INSERT OR IGNORE INTO restaurants (id, name, cuisine, owner_id, status) VALUES (2, 'Burger Craft & Co.', 'Burgers & Fries', 2, 'OPEN');");
             stmt.execute("INSERT OR IGNORE INTO restaurants (id, name, cuisine, owner_id, status) VALUES (3, 'Pizzeria Napoli', 'Italian & Pizzas', 2, 'OPEN');");
             stmt.execute("INSERT OR IGNORE INTO restaurants (id, name, cuisine, owner_id, status) VALUES (5, 'The Campus Maggi Point', 'Maggi & Quick Bites', 2, 'OPEN');");
             stmt.execute("INSERT OR IGNORE INTO restaurants (id, name, cuisine, owner_id, status) VALUES (6, 'The Campus Ice Cream Parlour', 'Ice Cream & Shakes', 2, 'OPEN');");
             
-            // Biryani
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (1, 1, 'Hyderabadi Chicken Biryani', 280.00, 'biryani', 'assets/dish_chicken_biryani.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (2, 1, 'Paneer Tikka Dum Biryani', 210.00, 'biryani', 'assets/dish_paneer_biryani.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (3, 1, 'Lucknowi Veg Dum Biryani', 220.00, 'biryani', 'assets/dish_veg_biryani.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (14, 1, 'Kolkata Special Biryani', 250.00, 'biryani', 'assets/dish_kolkata_biryani.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (15, 1, 'Egg Dum Biryani', 180.00, 'biryani', 'assets/dish_egg_dum_biryani.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (32, 1, 'Royal Mutton Dum Biryani (Half)', 220.00, 'biryani', 'assets/dish_mutton_biryani.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (33, 1, 'Paneer Butter Masala Biryani', 195.00, 'biryani', 'assets/dish_paneer_biryani.png');");
-            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (34, 1, 'Egg Keema Dum Biryani', 170.00, 'biryani', 'assets/dish_egg_dum_biryani.png');");
+            // Snacks
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (1, 1, 'Mumbai Vada Pav (Double)', 60.00, 'snacks', 'assets/dish_vada_pav.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (2, 1, 'Crispy Samosa Chole Chaat', 75.00, 'snacks', 'assets/dish_samosa.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (3, 1, 'Paneer Pakora Platter', 110.00, 'snacks', 'assets/dish_pakora.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (14, 1, 'Aloo Tikki Burger Pav', 80.00, 'snacks', 'assets/dish_aloo_tikki_burger.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (15, 1, 'Cheesy Loaded Fries', 130.00, 'snacks', 'assets/dish_aloo_tikki_burger.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (32, 1, 'Crispy Onion Rings', 90.00, 'snacks', 'assets/dish_pakora.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (33, 1, 'Paneer Tikka Roll', 120.00, 'snacks', 'assets/dish_paneer_burger.png');");
+            stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (34, 1, 'Cheesy Nachos Bowl', 140.00, 'snacks', 'assets/dish_samosa.png');");
             
             // Burgers
             stmt.execute("INSERT OR IGNORE INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES (4, 2, 'Truffle Umami Burger', 350.00, 'burgers', 'assets/dish_truffle_burger.png');");

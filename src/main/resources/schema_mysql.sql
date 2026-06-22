@@ -108,23 +108,23 @@ INSERT INTO users (id, name, email, password, role, status) VALUES
 ON DUPLICATE KEY UPDATE email=email;
 
 INSERT INTO restaurants (id, name, cuisine, owner_id, status) VALUES 
-(1, 'Royal Biryani House', 'Indian & Biryani', 2, 'OPEN'),
+(1, 'Royal Snacks & Bites', 'Snacks & Finger Foods', 2, 'OPEN'),
 (2, 'Burger Craft & Co.', 'Burgers & Fries', 2, 'OPEN'),
 (3, 'Pizzeria Napoli', 'Italian & Pizzas', 2, 'OPEN'),
 (5, 'The Campus Maggi Point', 'Maggi & Quick Bites', 2, 'OPEN'),
 (6, 'The Campus Ice Cream Parlour', 'Ice Cream & Shakes', 2, 'OPEN')
-ON DUPLICATE KEY UPDATE name=name;
+ON DUPLICATE KEY UPDATE name=VALUES(name), cuisine=VALUES(cuisine);
 
 INSERT INTO menu_items (id, restaurant_id, name, price, category, image_url) VALUES 
--- Biryani
-(1, 1, 'Hyderabadi Chicken Biryani', 280.00, 'biryani', 'assets/dish_chicken_biryani.png'),
-(2, 1, 'Paneer Tikka Dum Biryani', 210.00, 'biryani', 'assets/dish_paneer_biryani.png'),
-(3, 1, 'Lucknowi Veg Dum Biryani', 220.00, 'biryani', 'assets/dish_veg_biryani.png'),
-(14, 1, 'Kolkata Special Biryani', 250.00, 'biryani', 'assets/dish_kolkata_biryani.png'),
-(15, 1, 'Egg Dum Biryani', 180.00, 'biryani', 'assets/dish_egg_dum_biryani.png'),
-(32, 1, 'Royal Mutton Dum Biryani (Half)', 220.00, 'biryani', 'assets/dish_mutton_biryani.png'),
-(33, 1, 'Paneer Butter Masala Biryani', 195.00, 'biryani', 'assets/dish_paneer_biryani.png'),
-(34, 1, 'Egg Keema Dum Biryani', 170.00, 'biryani', 'assets/dish_egg_dum_biryani.png'),
+-- Snacks
+(1, 1, 'Mumbai Vada Pav (Double)', 60.00, 'snacks', 'assets/dish_vada_pav.png'),
+(2, 1, 'Crispy Samosa Chole Chaat', 75.00, 'snacks', 'assets/dish_samosa.png'),
+(3, 1, 'Paneer Pakora Platter', 110.00, 'snacks', 'assets/dish_pakora.png'),
+(14, 1, 'Aloo Tikki Burger Pav', 80.00, 'snacks', 'assets/dish_aloo_tikki_burger.png'),
+(15, 1, 'Cheesy Loaded Fries', 130.00, 'snacks', 'assets/dish_aloo_tikki_burger.png'),
+(32, 1, 'Crispy Onion Rings', 90.00, 'snacks', 'assets/dish_pakora.png'),
+(33, 1, 'Paneer Tikka Roll', 120.00, 'snacks', 'assets/dish_paneer_burger.png'),
+(34, 1, 'Cheesy Nachos Bowl', 140.00, 'snacks', 'assets/dish_samosa.png'),
 -- Burgers
 (4, 2, 'Truffle Umami Burger', 350.00, 'burgers', 'assets/dish_truffle_burger.png'),
 (20, 2, 'Crispy Paneer & Jalapeno Burger', 240.00, 'burgers', 'assets/dish_paneer_burger.png'),
@@ -165,4 +165,4 @@ INSERT INTO menu_items (id, restaurant_id, name, price, category, image_url) VAL
 (48, 6, 'Rabri Malai Falooda Bowl', 150.00, 'icecream', 'assets/dish_rose_lassi.png'),
 (49, 6, 'Hot Rasgulla in Sweet Syrup (2 Pcs)', 80.00, 'icecream', 'assets/dish_gulab_jamun.png'),
 (50, 6, 'Double Ka Meetha (Bread Pudding)', 110.00, 'icecream', 'assets/dish_gulab_jamun.png')
-ON DUPLICATE KEY UPDATE name=name;
+ON DUPLICATE KEY UPDATE name=VALUES(name), price=VALUES(price), category=VALUES(category), image_url=VALUES(image_url);

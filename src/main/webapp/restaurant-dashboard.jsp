@@ -195,7 +195,7 @@
               <input type="text" name="name" class="form-input" placeholder="Dish Name" required>
               <input type="number" step="0.01" name="price" class="form-input" placeholder="Price (₹)" required>
               <select name="category" class="filter-select" style="border-radius: var(--radius-md);">
-                <option value="biryani">Biryani</option>
+                <option value="snacks">Snacks</option>
                 <option value="maggi">Maggi</option>
                 <option value="burgers">Burgers</option>
                 <option value="pizza">Pizza</option>

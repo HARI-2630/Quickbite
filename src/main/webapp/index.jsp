@@ -343,8 +343,8 @@
           </svg>
           <!-- Floating Platter Image -->
           <div class="dish-showcase-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; text-align: center; width: 260px; height: 260px;">
-            <img id="hero-dish-image" src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500" alt="Showcase Platter" style="width: 230px; height: 230px; object-fit: cover; border-radius: var(--radius-full); filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2)); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); animation: spin-slow 40s linear infinite;">
-            <span id="hero-dish-text" style="position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 0.82rem; font-weight: 800; background: var(--bg-card); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: var(--radius-full); box-shadow: var(--shadow-sm); color: var(--text-primary); transition: all 0.3s;">Hyderabadi Chicken Biryani</span>
+            <img id="hero-dish-image" src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500" alt="Showcase Platter" style="width: 230px; height: 230px; object-fit: cover; border-radius: var(--radius-full); filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2)); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); animation: spin-slow 40s linear infinite;">
+            <span id="hero-dish-text" style="position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 0.82rem; font-weight: 800; background: var(--bg-card); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: var(--radius-full); box-shadow: var(--shadow-sm); color: var(--text-primary); transition: all 0.3s;">Cheesy Loaded Nachos</span>
           </div>
         </div>
       </div>
@@ -355,7 +355,7 @@
   <section class="categories-section" style="padding: 20px 0;">
     <div class="container">
       <div class="category-container" style="justify-content: center;">
-        <button class="category-pill active" onclick="changeHeroDish('biryani')" style="cursor: pointer;"><span class="category-icon">🍛</span><span>Biryani</span></button>
+        <button class="category-pill active" onclick="changeHeroDish('snacks')" style="cursor: pointer;"><span class="category-icon">🍟</span><span>Snacks</span></button>
         <button class="category-pill" onclick="changeHeroDish('maggi')" style="cursor: pointer;"><span class="category-icon">🍜</span><span>Maggi</span></button>
         <button class="category-pill" onclick="changeHeroDish('burgers')" style="cursor: pointer;"><span class="category-icon">🍔</span><span>Burgers</span></button>
         <button class="category-pill" onclick="changeHeroDish('pizza')" style="cursor: pointer;"><span class="category-icon">🍕</span><span>Pizzas</span></button>
@@ -375,12 +375,12 @@
       <div class="landing-rest-grid">
         <article class="landing-rest-card" onclick="openAuthModal()">
           <div class="landing-rest-img">
-            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500" alt="Royal Biryani House">
+            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500" alt="Royal Snacks & Bites">
             <span class="rating-badge">4.9 ★</span>
           </div>
           <div style="padding: 24px; transform: translateZ(10px);">
-            <h3 style="font-size: 1.25rem; font-weight: 850;">Royal Biryani House</h3>
-            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Authentic dum rice and Indian delicacies.</p>
+            <h3 style="font-size: 1.25rem; font-weight: 850;">Royal Snacks & Bites</h3>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Crispy appetizers, quick bites, and finger foods.</p>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">
               <span>🕒 15-20 min</span>
               <span style="color: var(--color-primary);">Order Now →</span>
@@ -684,9 +684,9 @@
     const heroGlowRing = document.querySelector('.hero-svg-ring');
     
     const dishes = {
-      biryani: {
-        src: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500',
-        name: 'Hyderabadi Chicken Biryani',
+      snacks: {
+        src: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500',
+        name: 'Cheesy Loaded Nachos',
         color: '#ff4757'
       },
       maggi: {
