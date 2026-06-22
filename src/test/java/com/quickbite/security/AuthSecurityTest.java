@@ -87,4 +87,16 @@ public class AuthSecurityTest {
         assertFalse(com.quickbite.servlets.StripePaymentServlet.validateExpiry("invalid"));
         assertFalse(com.quickbite.servlets.StripePaymentServlet.validateExpiry(null));
     }
+
+    @Test
+    public void testOtpGeneration() {
+        String otp1 = OtpService.generateOtp();
+        assertNotNull(otp1);
+        assertEquals(6, otp1.length(), "OTP must be exactly 6 digits");
+        assertTrue(otp1.matches("^\\d{6}$"), "OTP must contain only digits");
+        
+        // Verify randomness over subsequent calls
+        String otp2 = OtpService.generateOtp();
+        assertNotEquals(otp1, otp2, "Subsequent OTP generations should be random and distinct");
+    }
 }
